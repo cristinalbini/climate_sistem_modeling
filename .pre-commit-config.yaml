@@ -1,0 +1,17 @@
+repos:
+  - repo: local
+    hooks:
+      # Hook to compile LaTeX using compile.sh
+#      - id: compile-tex
+#        name: Compile LaTeX with compile.sh
+#        entry: ./compile.sh
+#        language: system
+#        types: [tex]
+#        always_run: true
+
+      # Hook to format LaTeX files with latexindent
+      - id: format-latex
+        name: Format LaTeX files (.tex and .sty) with latexindent
+        entry: bash -c 'FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E "\.(tex|sty)$"); if [ -n "$FILES" ]; then latexindent -w $FILES; fi'
+        language: system
+        files: \.(tex|sty)$

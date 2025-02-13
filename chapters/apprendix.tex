@@ -1,0 +1,432 @@
+\appendix
+\chapter{Mathematical Complements}\label{ch:appendixA}
+\lastupdated{2024-12-09}{\chapterAppendixA}
+
+\section{Vector calculus}\label{sec:vector-calc}
+
+\subsection{Gradient}\label{subsec:gradient}
+The gradient measures the rate and direction of the steepest increase of a scalar field.
+It is a vector operation applied to a scalar field, and the result is a vector field.
+Mathematically, for a scalar field $\psi(x,y,z)$ the gradient is defined as (in cartesian coordinates):
+\begin{equation}
+	\grad{\psi}=\left( \partialx{\psi}, \partialy{\psi}, \partialz{\psi}\right)
+	\label{eq:gradient-def}
+\end{equation}
+The gradient points in the direction where the scalar field $f$ increases most rapidly.
+The magnitude of the gradient gives the rate of increase in that direction.
+In thermodynamics, the gradient of temperature describes the direction and rate of heat flow.
+The result of a gradient is a vector.
+
+The gradient operator in the usual earth spherical coordinate system described in~\secref{\ref{subsec:spherical-coordinate-systems}} reads
+\begin{equation}
+	\grad{\psi} = \frac{1}{r} \partialphi{\psi} \unitv{e}_{\phi} +
+	\frac{1}{r \cos \phi} \partiallambda{\psi} \unitv{e}_{\lambda} +
+	\partialz{\psi}\unitv{k}
+	\label{eq:gradient-spherical-coords}
+\end{equation}
+
+\subsection{Divergence}\label{subsec:divergence}
+In vector calculus, divergence measures the rate at which a vector field spreads out or converges at a given point.
+It quantifies how much the field ``diverges'' from or ``converges'' into a region.
+For a \textbf{vector field} $\vec{\psi}=(\psi_x,\psi_y,\psi_z)$ the divergence is defined as (in cartesian coordinates):
+\begin{equation}
+	\diverg{\vec{\psi}}= \partialx{\psi_x} + \partialy{\psi_y} + \partialz{\psi_z} \, .
+	\label{eq:divergence-def}
+\end{equation}
+In the usual earth spherical coordinates system
+of~\secref{\ref{subsec:spherical-coordinate-systems}},~\eq{\ref{eq:divergence-def}} for a vector field
+$\vec{\psi} = (\psi_{\phi}, \psi_{\lambda}, \psi_{z})$ reads
+\begin{equation}
+	\diverg{\vec{\psi}} = \frac{1}{r \cos \phi} \partiallambda{\psi_{\lambda}} +
+	\frac{1}{r \cos \phi} \partialphi{\psi_{\phi}} +
+	\partialz{\psi_z} \, .
+	\label{eq:divergence-spherical-coords}
+\end{equation}
+A positive divergence, i.e. $\diverg{\vec{\psi}}>0$, indicates a fields that is ``spreading out'' or ``expanding'' at a point.
+An example might be that of a source emitting fluid, such as water spraying out of a fountain.
+On the other hand $\diverg{\vec{\psi}}<0$) means the field is ``converging'' or ``contracting'' at a point.
+For instance, take a sink where fluid flows inward, such as water draining into a hole.
+Finally, $\diverg{\vec{\psi}}=0$ describes a field that is neither expanding nor contracting,
+often indicating an incompressible flow.
+An example is a steady incompressible flow of a fluid.
+
+
+\subsection{Curl}\label{subsec:curl}
+The curl of a vector field measures the tendency of the field to induce rotation around a point, or how much the field ``circulates'' locally.
+It is a vector operation applied to a vector field, and the result is another vector field.
+For a \textbf{vector field} $\vec{\psi}=(\psi_x,\psi_y,\psi_z)$ the curl is defined as (in cartesian coordinates):
+\begin{equation}
+	\curl{\vec{\psi}}=
+	\begin{vmatrix}
+		\unitv{\imath}              & \unitv{\jmath}              & \unitv{k}                   \\
+		\frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\
+		\psi_x                      & \psi_y                      & \psi_z
+	\end{vmatrix}
+	\label{eq:curl-def}
+\end{equation}
+In the usual earth spherical coordinates system
+of~\secref{\ref{subsec:spherical-coordinate-systems}},~\eq{\ref{eq:curl-def}} for a vector field
+$\vec{\psi} = (\psi_{\phi}, \psi_{\lambda}, \psi_{z})$ reads
+\begin{equation}
+	\curl{\vec{\psi}} =
+	\frac{1}{r \cos\phi}
+	\begin{vmatrix}
+		\unitv{e}_\phi & r \cos\phi \, \unitv{e}_\lambda   & \unitv{k}                   \\
+		\partialphi{}  & \frac{\partial}{\partial \lambda} & \frac{\partial}{\partial z} \\
+		\psi_{\phi}    & r \cos\phi \, \psi_{\lambda}      & \psi_{z}
+	\end{vmatrix}
+	\label{eq:curl-spherical-coords-det}
+\end{equation}
+Expanding~\eq{\ref{eq:curl-spherical-coords-det}} gives:
+\begin{equation}
+	\curl{\vec{\psi}}=
+	\unitv{k} \frac{1}{r \cos\phi} \left[ \partiallambda{\psi_{\phi}} - \partialphi{} (\psi_{\lambda} \cos\phi) \right]
+	+ \unitv{e}_\phi \frac{1}{r} \left( \partiallambda{\psi_z} - \partialz{\psi_{\lambda}} \right)
+	+ \unitv{e}_\lambda \frac{1}{r} \left( \partialz{\psi_{\phi}} -  \partialphi{\psi_{z}}\right)
+	\label{eq:curl-spherical-coords}
+\end{equation}
+The curl outputs a vector field whose direction indicates the axis of rotation (using the right-hand rule),
+and whose magnitude indicates the strength of the rotation.
+The curl represents the amount and direction of rotational motion or ``swirl'' in the field.
+In fluid dynamics, a region of nonzero curl corresponds to vorticity, where fluid particles rotate.
+
+\section{Spherical harmonics}
+\label{sec:spherical-harmonics}
+
+Spherical harmonics are key mathematical functions in the expansion of scalar and vector fields on the surface of a sphere. In climate modeling, they are extensively used for representing atmospheric and oceanic variables, such as temperature, pressure, and wind patterns, on the spherical surface of Earth.
+
+Let's break down the \textbf{spherical harmonics expansion} in more detail, looking at its mathematical formulation, properties, and applications, especially in the context of climate modeling.
+
+\subsection{Mathematical Definition of Spherical Harmonics}
+\label{subsec:spherical-harmonics-def}
+
+The spherical harmonics $Y_l^m(\theta, \phi)$ are solutions to the Laplace equation on the sphere. They depend on two angular coordinates, \textbf{latitude} ($\theta$) and \textbf{longitude} ($\phi$).
+The general form of a spherical harmonic is:
+\[Y_l^m(\theta,\phi)=N_l^m P_l^m(\cos\theta)e^{im\phi}\]
+Where:
+\begin{itemize}
+	\item $l$ is the \textbf{degree} of the harmonic, a non-negative integer ($l=0,1,2,3,…$).
+	\item  $m$ is the \textbf{order} of the harmonic, an integer satisfying $-l\leq m\leq l$
+	\item $P_l^m(\cos\theta)$ are the \textbf{associated Legendre polynomials}, which define the angular part of the function in terms of the \textbf{colatitude} ($\theta$).
+	\item $e^{im\phi}$ is a complex exponential that encodes the \textbf{longitudinal} dependence, where $m$ controls the azimuthal symmetry.
+\end{itemize}
+
+\paragraph{\textbf{Normalization Constant}:}
+
+The spherical harmonics are typically normalized such that:
+$$N_l^m=\sqrt{\frac{(2l+1)(l-|m|)!}{4\pi(l+|m|)!}}$$
+This ensures that the spherical harmonics are \textbf{orthonormal} over the surface of the sphere. That is:
+
+$$\int_0^{\pi}\int_0^{2\pi}Y_l^m(\theta, \phi)\overline{Y_{l'}^{m'}(\theta,\phi)}\sin\theta d\theta d\phi=\delta_{l,l'}\delta_{m,m'}$$ where $\overline{Y_l^m}$
+is the complex conjugate of $Y_l^m$, and $\delta$ is the \textbf{Kronecker delta}, which equals 1 if the indices are equal, and 0 otherwise.
+
+\subsection{Spherical Harmonics Expansion of Functions on the Sphere}
+
+Given a scalar field $f(\theta,\phi)$ defined on the surface of a sphere (such as the Earth's atmosphere), we can expand it in terms of spherical harmonics as a series:
+\[f(\theta,\phi)=\displaystyle\sum_{l=0}^L\displaystyle\sum_{m=-l}^{l}a_l^mY_l^m(\theta,\phi)\]
+
+Here:
+
+\begin{itemize}
+	\item $L$ is the \textbf{truncation level}, which determines the maximum degree of spherical harmonics included in the expansion.
+	\item $a_l^m$ are the \textbf{spectral coefficients} that need to be determined.
+\end{itemize}
+
+\paragraph{\textbf{Computing the Coefficients}:}
+
+To find the spectral coefficients, we use the orthonormality of the spherical harmonics. The coefficient $a_l^m$ is given by the integral:
+\[
+	a_l^m=\int_0^\pi\int_0^{2\pi}f(\theta,\phi)\overline{Y_l^m(\theta,\phi)}\sin\theta d\theta d\phi
+\]
+
+This integral projects the function $f(\theta,\phi)$ onto the spherical harmonic $Y_l^m(\theta,\phi)$, extracting the corresponding coefficient.
+
+\paragraph{\textbf{Truncation of the Series}:}
+
+In practice, we do not include all spherical harmonics. Instead, we truncate the sum at some maximum value of l=Ll = Ll=L, which results in a finite series expansion. The truncation determines the \textbf{spectral resolution} of the model and defines the number of spherical harmonic modes included in the representation of the field.
+
+For example:
+
+\begin{itemize}
+	\item If $L=10$, then the expansion includes all spherical harmonics from degree $l=0$ up to $l=10$.
+	\item The total number of terms in the expansion is given by the sum $\displaystyle\sum_{l=0}^L(2l+1)$, which grows roughly as $L^2$.
+\end{itemize}
+For $L=10$, the total number of terms is:
+\[
+	N_{terms}=\displaystyle_{l=0}^{10}=1+3+5+7+9+11+13+15+17+19+21=100
+\]
+so, the function $f(\theta,\phi)$, is approximated by a sum of 100 spherical harmonic terms.
+
+\subsection{Properties of Spherical Harmonics}
+
+\paragraph{\textbf{Orthogonality and Completeness}:}
+
+Spherical harmonics are \textbf{orthogonal} over the surface of the sphere, meaning that any two different harmonics $Y_l^m$ and $Y_{l'}^{m'}$ are perpendicular in the function space. This property makes them ideal for decomposing a function into distinct components.
+
+Additionally, the set of spherical harmonics forms a \textbf{complete basis} for any square-integrable function defined on the sphere. This means that any smooth function $f(\theta,\phi)$ can be represented as a (potentially infinite) sum of spherical harmonics.
+
+\paragraph{\textbf{Symmetry}:}
+
+\begin{itemize}
+	\item The degree $l$ of a spherical harmonic determines the \textbf{angular scale} of the feature. Large values of $l$ correspond to smaller-scale features (higher-frequency components), while small values of $l$ correspond to large-scale, low-frequency components.
+	\item The order $m$ determines the \textbf{longitudinal symmetry}. For each $l$ there are $2l+1$ distinct values of $m$ ranging from $-l$ to $l$ corresponding to different symmetries of the field in the longitudinal direction.
+\end{itemize}
+For example:
+
+\begin{itemize}
+	\item The spherical harmonic $Y_1^0(\theta,\phi)$ corresponds to a dipole, with a variation in latitude but no longitudinal variation.
+	\item The spherical harmonic $Y_2^1(\theta,\phi)$ corresponds to a pattern with more complex longitudinal symmetry.
+\end{itemize}
+
+\paragraph{\textbf{Scaling}:}
+
+The spherical harmonics have a natural scaling property. For instance, multiplying a spherical harmonic by a constant factor will change the amplitude of the corresponding mode without affecting the symmetry of the function. This property is useful for scaling fields, such as wind speeds or temperature distributions, in climate models.
+
+\subsection{Applications of Spherical Harmonics in Climate Models}
+
+In climate and weather models, spherical harmonics are used to represent global fields with high accuracy and relatively few coefficients, which is especially useful for simulating large-scale atmospheric dynamics.
+
+Some specific applications include:
+
+\paragraph{\textbf{Atmospheric Dynamics}:}
+
+\begin{itemize}
+	\item Atmospheric models often represent variables like pressure, temperature, and wind in terms of spherical harmonics. By expanding these fields in spherical harmonics, models can capture large-scale features such as the \textbf{zonal wind}, \textbf{jet streams}, and \textbf{planetary waves} with fewer coefficients than would be required for grid-based methods.
+	\item For example, the \textbf{vorticity equation} or the \textbf{primitive equations} of motion are often solved in spectral space, and spherical harmonics are used to expand the relevant fields.
+\end{itemize}
+
+\paragraph{\textbf{Global Climate Models (GCMs)}:}
+
+\begin{itemize}
+	\item In GCMs, the Earth's climate is simulated by solving for variables (e.g., temperature, pressure, wind) at each point on the sphere. By using spherical harmonics, GCMs can efficiently model the global climate while avoiding the need for very fine grids (which would be computationally expensive).
+	\item \textbf{Spectral Finite-Difference Models}: Some models combine the benefits of spectral methods for large-scale patterns with finite-difference methods for localized phenomena (like convection or boundary layers), allowing for efficient simulations of both large-scale and small-scale processes.
+\end{itemize}
+
+\paragraph{\textbf{Ocean Models}:}
+
+Similar to atmospheric models, ocean circulation models may use spherical harmonics to represent the spatial structure of the ocean's surface currents, sea level anomalies, and other global patterns.
+
+\paragraph{\textbf{Data Assimilation}:}
+
+In data assimilation methods, spherical harmonics can be used to represent the state of the atmosphere or ocean at a given time, with spectral coefficients used to update the model's state based on observations.
+
+
+\section{EOF: Empirical Orthogonal Functions}\label{sec:EOF}
+
+\begin{defn}{EOF}
+	{
+		The Empirical Orthogonal\footnote{\textit{empirical}= derived from data, \textit{orthogonal}= the scalar product is zero.}
+		Functions methods is a for analyzing large datasets that vary over both space and time; it helps to extract dominant patterns of variability in a data set.
+	}
+\end{defn}
+\paragraph{How does it work?}
+\begin{enumerate}
+	\item Matrix representing spatiotemporal data $\mat{X}(i,j)$:\\
+	      rows $i$ $\rightarrow$ time steps \\
+	      columns $j$ $\rightarrow$ spatial points\\
+	\item To identify the major patterns of variability we compute the covariance matrix of the data. It describes how each spatial location's data varies in relation to every other location:
+	      \[\mat{C} = \text{COV} = \frac{1}{n} \mat{X}^T \mat{X} \]
+	      where $\mat{X}=\mat{X}(i,j)-\overline{\mat{X}_j}$
+	\item The covariance matrix is decomposed into eigenvalues and eigenvectors $\rightarrow$ \textsc{Singular Value Decomposition SVD}:
+	      \[\mat{C} \vec{v}=\lambda \vec{v} \]
+	      with $\vec{v}$ eigenvector or spatial patterns, $\lambda$ eigenvalues (it describes the variance expressed by each pattern). In this way we get how each data location relates to others.
+	\item Projecting the original data into these $\vec{v}$ we obtain the \textsc{principal components} that show how each spatial pattern evolves over time.
+	      \[ \text{PC}(t)=\mat{X}\cdot\vec{v} \]
+\end{enumerate}
+Therefore,
+\begin{itemize}
+	\item EOFs (=eigenvectors) represent the dominant spatial patterns in data, each shoes a specific pattern variability over space (e.g. how $T$ pattern shifts across the globe).
+	\item PCs (principal components) are the time series corresponding to each EOF.
+\end{itemize}
+The eigenvalues tell how much variance each EOF captures: if they capture most of the variance it means they represent the major patterns in the data.
+EOF and PCs (Principal Component Analysis) are the same techniques mathematically but the EOF goal is to find \textsc{spatial patterns} and their correspondig \textsc{time evolution}; while the PCA aims to find the directions of maximum variance in data irrespective of space and time. PCA helps in dimensionality reduction.
+
+\paragraph{Note.} The diagonal I find after the eigenvalue decomposition is the sum of the covariants:
+\[
+	\mat{X} = \mat{U} \mat{\Sigma} \mat{V}^T \quad \text{so that} \quad \mat{S}=\mat{X}\mat{X}^T=\mat{U} \mat{\Sigma}^2 \mat{U}^T
+\]
+In $\mat{U}$ are the eigenfunctions associated to the covariant, in $\mat{\Sigma}$ the eigenvalues.
+
+When you have a time serie of data, you should organize them in some order: a matrix where every row ($1\leq j\leq n$) is a time variation, hence every vector is a space variation of some place in the same tame:
+\[
+	\mat{X}=\left[\mat{X_1, X_2,\dots, X_n} \right]
+\]
+\[
+	\mat{S}=\frac{1}
+	{1-n}\mat{X}\mat{X}^T
+\]
+on the diagonal of $\mathbf{S}$, you have the same location (covariance relation), every other element is the covariance of two different locations (it defines how two locations are connected in time): $$\text{Tr}(\mathbf{S})=\sum\sigma^2$$. It becomes a correlation matrix if divided by the standard deviations of the locations. $\mathbf{XX^T}$ as symmetric, meaning the eigenvalues are positive and eigenvectors are orthogonal. The eigenvectors represent the EOF. The single value decomposition tells us that any matrix can be written in terms of 2 different other orthogonal matrices: $\mathbf{X}=U\Sigma V^T$. I could simply take the data matrix and compute the SVD:
+\[x(i)=\sum_i\vec{u_i}\sigma_iv_i\]
+how much covariance the pattern $u$ of EOF corresponding to the singular value decomposition  is responsable for:
+\[\mu_i=\frac{\sigma_i^2}{\displaystyle\sum_{i=1}^{n}\sigma_i^2}\]
+
+\subsection{Eigenvalue decomposition $\rightarrow$ Singular Value Decomposition}
+\label{subsec:svd}
+It helps to understand what is the weight of the $\vec{u_i}$ component in the $\vec{x}$ dataset.
+\\
+
+
+orthogonal matrix $\mat{U}\mat{U}^T= \mat{I} \rightarrow$ they are rotating operating on one vector. You could take any transformation breaking it into 3 processes:
+\begin{center}
+	rotation $\rightarrow$ stretching (diagonal matrix) $\rightarrow$ rotation
+\end{center}
+If I can decompose $\rightarrow \quad \mat{S}=\mat{U} \mat{\Sigma}^2 \mat{U}^T$.
+Note that the $\text{tr}(\mat{\Sigma})=\mat{S}$.
+The number of columns in $\mat{U}= \mat{\Sigma}_{ij}$ where $t_i$ is the number of time variations and $x_j$ the number of features.
+
+Every column in the data matrix can be expanded:
+\begin{equation*}
+	\vec{x}(t)=\sum_i \vec{u}_i \sigma_i v_i(t)
+\end{equation*}
+with $u_i$= patterns, $\sigma_i$=singular value and $v_i$ weight of the pattern i that particular time. $\vec{x}=\vec{u}_i$ in terms of vector with the same length. EOF method defines only the independent variables.
+
+SST (lat,long) $\rightarrow$ transforms into a vector $\rightarrow$ $\begin{bmatrix}
+		\text{lat}_1 \\
+		\text{lat}_2 \\
+		\dots        \\
+		\text{lat}_n
+	\end{bmatrix}$ $\rightarrow$ I can represent them in a map.
+($u_i$ and $v_i$ compensate each other).
+Higher EOF means more zero lines, meaning more oscillations.
+
+\subsection{Limitations}\label{subsec:eof-limitations}
+\begin{itemize}
+	\item because of the $+$ and $-$ we are imposing a structure looking for patterns that are orthogonal (we exclude data)
+	\item thinking of EOF as oscillations
+\end{itemize}
+
+\subsection{Variance}\label{subsec:variance}
+The variance of the data $\mat{X}$ is defined as
+\begin{equation}
+	\sigma^2 = \displaystyle\sum_{i=1}^n\frac{(x-\overline{x})^2}{n}
+	\label{eq:variance-def}
+\end{equation}
+
+\subsection{Covariance}\label{subsec:covariance}
+Basically it is a straight multiplication.
+It's a statistical measure that indicates the degree to which two random variables change together. If two variables tend to increase or decrease in tandem then $\text{COV}>0$; if one tends to increase while the other decreases, then $\text{COV}<0$.
+\begin{equation}
+	\text{COV}(\mat{X},\mat{Y}) = \frac{1}{n}\sum_{i=1}^n(x_i-\overline{x})(y_i-\overline{y})
+	\label{eq:covariance-def}
+\end{equation}
+Covariance helps identify the relationship between two variables but it does not provide information about the strength or scale of the relationship $\rightarrow$ correlation.
+
+\subsection{Correlation}\label{subsec:correlation}
+Statistical measure that describes the strength and direction of a linear relationship between two variables. It \textsc{standardizes} the relationship, providing a dimensionless value that ranges between $-1$ and $1$.
+\begin{equation}
+	r=\frac{\text{COV}(\mat{X},\mat{Y})}{\sigma_x\sigma_y}
+	\label{eq:linear-correlation-def}
+\end{equation}
+$\sigma_i$ are the standard deviations.
+\begin{itemize}
+	\item $r=1$ perfect \textunderscore{positive} linear relation
+	\item $r=-1$  perfect \textunderscore{negative} linear relation
+	\item $r=0$ no linear relation
+\end{itemize}
+
+
+\section{Space-time splittings}\label{sec:space-time-splittings}
+The dominant shape of the global circulation suggests that some understanding can be gained from splitting the physical fields into larger and smaller portions using appropriate averages. At a first inspection, the flow is seen as a predominant circumpolar vortex with superposed fluctuations in space and time. The longitudinal direction is also known as the “zonal” direction, therefore the average over longitude is known as the zonal averaging
+
+\subsection{Zonal means}\label{subsec:zonal-mean}
+The zonal mean of a quantity A is defined as the average over longitudes.
+Commonly used symbols in the literature are the overbar $\overline{u}$ or square brackets [u],
+the first is most frequently encountered in the theoretical and modeling literature whereas the second is most commonly used in observational and diagnostics works.
+In the following, we will denote the zonal mean of a field $A$ as:
+\begin{equation}
+	\zonmean{A} = \frac{1}{2\pi}\int_0^{2\pi} A \dxOne
+	\label{eq:zonal-mean-def}
+\end{equation}
+so that the entire field can be decomposed into
+\begin{equation}
+	A = \zonmean{A}+ A^*
+	\label{eq:field-zonal-mean-decomp}
+\end{equation}
+where $A^*$ is the deviation from the zonal mean.
+The average has the properties that \( \zonmean{\zonmean{A}} = \zonmean{A}\) and \(\zonmean{A^*}=0\).
+
+When a stream function can be defined, the average zonal mean meridional
+velocity is zero:
+\begin{equation}
+	\zonmean{v} = \frac{1}{2\pi}\int_0^{2\pi} v \, dx=\frac{1}{2\pi}\int_0^{2\pi} \frac{\partial \psi}{\partial x} \, dx=0
+	\label{eq:zonal-mean-v}
+\end{equation}
+This is a consequence of the more general result that the zonal mean of
+any quantity that is a longitude derivative is zero.
+
+\subsection{Time means}\label{subsec:time-mean}
+The time mean is defined simply as the average over a length of time.
+As for the zonal mean (\eq{\ref{eq:zonal-mean-def}}), multiple symbols are employed.
+Here we denote the time mean of a field $A$ with:
+\begin{equation}
+	\timemean{A} = \frac{1}{T}\int_0^{T} A \dt
+	\label{eq:time-mean-def}
+\end{equation}
+so that the total field is
+\begin{equation}
+	A = \timemean{A} + A'
+	\label{eq:field-time-mean-decomp}
+\end{equation}
+The deviations from the zonal means are called ``eddy'' components. An
+eddy that obeys a dispersion relation is a ``wave''.
+
+\subsection{Higher order quantities}\label{subsec:higher-order-means}
+
+The averages can be used to decompose higher-order quantities. For
+instance using zonal means a quadratic correlation of the form \(A B\)
+can be decomposed as
+\begin{equation}
+	A B = (\zonmean{A}+A^*)(\zonmean{B}+B^*) = A^*B^* + \zonmean{A} B^*+ A^*\zonmean{B} + \zonmean{A}\zonmean{B}
+	\label{eq:decomp-AB-zonal}
+\end{equation}
+If we take the zonal mean of~\eq{\ref{eq:decomp-AB-zonal}}, i.e.~the second order mean of $AB$,
+we end up with the following decomposition:
+\begin{equation}
+	\zonmean{AB}= \zonmean{A^*B^* + \zonmean{A} B^* + A^* \zonmean{B} + \zonmean{A}\zonmean{B}} =
+	\zonmean{A}\zonmean{B} + \zonmean{A^*B^*}
+	\label{eq:decomp-AB-zonal-2nd-ord}
+\end{equation}
+where the mix terms disappear as $\zonmean{A^*} = 0$.
+
+We can refine the splitting by considering the time average splitting of
+the zonal terms:
+\begin{equation}
+	= \timemean{[A]} + [A]'
+	A^* = \timemean{A}^* + A'^*
+\end{equation}
+These terms represent the stationary symmetric circulation, the
+transient symmetric circulation and the stationary deviation from the
+zonal means (``asymmetries'') and the transient asymmetries.
+Inserting these relations into Eq. \ref{eq:decomp-AB-zonal-2nd-ord} we get
+\begin{equation}
+	= (\timemean{[A]} + [A]')(\timemean{[B]} + [B]') + [A^*B^*]
+\end{equation}
+the time mean of the terms linear in the time deviation will average
+again to zero (this time with respect the time mean) and we finally get
+\begin{equation}
+	\overline{[AB]}) = \timemean{[A]}\timemean{[B]} + \overline{[A]'[B]'} + \overline{[A^*B^*]}
+\end{equation}
+The decompositions are not unique. We have first performed the split in
+the zonal mean and then the split in the time mean, considering a split
+only in the eddy part:
+\begin{equation}
+	A^* =    \timemean{A}^* + A'^*
+\end{equation}
+we would get
+\begin{equation}
+	\zonmean{\timemean{AB}} = \timemean{[A]}\timemean{[B]} +  [\timemean{A}^*\timemean{B}^*]+[\overline{A'^*B'^*}]
+\end{equation}
+where the first term is the contribution of the mean meridional
+circulation, the second is the contribution of the time-mean
+(standing) eddies and the last one is the contribution of the
+transient eddies. This kind of decomposition is therefore a useful instrument but
+requires always consideration of the hypothesis formulated in the
+initial design. Another consideration is that they depend on the
+specific kind of averaging that is used. There is little choice in the
+zonal mean, being fixed by the geometry, but we have much more choices
+in the case of the time mean. Results will depend on the length of the
+time averaging period and on the original frequency of the data. Time
+mean and second-order quantities calculated over daily will differ from
+the same quantities calculated over time series of weekly or monthly
+data. There is no \emph{correct} choice, each one will offer a different
+glimpse in the data from a chosen perspective.

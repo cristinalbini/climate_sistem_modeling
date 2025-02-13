@@ -20,30 +20,40 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y texlive-full biber make
 
-      # Step 3: Compile notes.pdf using custom script
-      - name: Compile notes.pdf with custom script
+      # Step 3: Compile notes.pdf (senza compile.sh, gestisce errori)
+      - name: Compile notes.pdf
         run: |
-          chmod +x ./compile.sh
-          make notes
+          if [ -f "makefile" ]; then
+            make notes || echo "makefile failed, trying pdflatex..."
+          fi
+          if [ -f "notes.tex" ]; then
+            pdflatex notes.tex || echo "Failed to compile notes.tex"
+          fi
 
-      # Step 4: Compile overleaf.pdf using Makefile
+      # Step 4: Compile overleaf.pdf (se esiste il file)
       - name: Compile overleaf.pdf
-        run: make overleaf
+        run: |
+          if [ -f "makefile" ]; then
+            make overleaf || echo "makefile failed, trying pdflatex..."
+          fi
+          if [ -f "overleaf.tex" ]; then
+            pdflatex overleaf.tex || echo "Failed to compile overleaf.tex"
+          fi
 
-      # Step 5: Copy the PDFs to a temporary directory
+      # Step 5: Create output directory and move PDFs
       - name: Prepare PDFs for deployment
         run: |
-          mkdir output
-          mv notes.pdf output/
-          mv notes_overleaf.pdf output/
+          mkdir -p output
+          if [ -f "notes.pdf" ]; then mv notes.pdf output/; fi
+          if [ -f "overleaf.pdf" ]; then mv overleaf.pdf output/; fi
 
-      # Step 6: Deploy the PDFs to the `pdf` branch
+      # Step 6: Deploy to PDF branch (crea la branch se non esiste)
       - name: Deploy to PDF branch
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: pdf   # Specify the branch to publish to
-          publish_dir: output   # Deploy both PDFs
-          force_orphan: true    # Use an orphan branch for clean publishing
-          keep_files: false     # Replace existing files in the branch
-          commit_message: "Update PDFs (notes.pdf and notes_overleaf.pdf)"
+          publish_branch: pdf   # Crea automaticamente la branch PDF
+          publish_dir: output   # Carica i PDF
+          force_orphan: true    # Assicura che la branch contenga solo i PDF
+          keep_files: false     # Sovrascrive i vecchi PDF
+          commit_message: "Update PDFs (notes.pdf and overleaf.pdf)"

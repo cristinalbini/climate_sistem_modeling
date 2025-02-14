@@ -51,5 +51,4 @@ jobs:
           publish_dir: output
           force_orphan: true
           keep_files: false
-          commit_message: "Up
-
+          commit_message: "Update overleaf.pdf"

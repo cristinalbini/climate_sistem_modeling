@@ -18,37 +18,32 @@ jobs:
       - name: Install LaTeX
         run: |
           sudo apt-get update
-          sudo apt-get install -y texlive-full texlive-latex-extra texlive-fonts-recommended texlive-bibtex-extra biber make
+          sudo apt-get install -y texlive-full biber make
 
-      # Step 3: Check if required files exist
-      - name: Check LaTeX source files
+      # Step 3: Compile notes.pdf using custom script
+      - name: Compile notes.pdf with custom script
         run: |
-          ls -R  # Mostra tutti i file presenti (utile per debug)
-          if [ ! -f "overleaf.tex" ]; then echo "❌ ERRORE: overleaf.tex non trovato!"; exit 1; fi
-          if [ ! -d "setup" ]; then echo "⚠️ ATTENZIONE: Cartella setup/ non trovata!"; fi
-          if [ ! -d "chapters" ]; then echo "⚠️ ATTENZIONE: Cartella chapters/ non trovata!"; fi
+          chmod +x ./compile.sh
+          make notes
 
-      # Step 4: Compile overleaf.pdf (cattura errori LaTeX)
+      # Step 4: Compile overleaf.pdf using Makefile
       - name: Compile overleaf.pdf
-        run: |
-          pdflatex -interaction=nonstopmode -halt-on-error overleaf.tex || (echo "❌ ERRORE LaTeX: Guarda il log sopra" && exit 1)
-          bibtex overleaf || echo "⚠️ BibTeX fallito, ma continuo..."
-          pdflatex -interaction=nonstopmode -halt-on-error overleaf.tex
-          pdflatex -interaction=nonstopmode -halt-on-error overleaf.tex
+        run: make overleaf
 
-      # Step 5: Create output directory and move PDFs
+      # Step 5: Copy the PDFs to a temporary directory
       - name: Prepare PDFs for deployment
         run: |
-          mkdir -p output
-          if [ -f "overleaf.pdf" ]; then mv overleaf.pdf output/; else echo "❌ ERRORE: overleaf.pdf non trovato!"; exit 1; fi
+          mkdir output
+          mv notes.pdf output/
+          mv notes_overleaf.pdf output/
 
-      # Step 6: Deploy to PDF branch
+      # Step 6: Deploy the PDFs to the `pdf` branch
       - name: Deploy to PDF branch
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: pdf
-          publish_dir: output
-          force_orphan: true
-          keep_files: false
-          commit_message: "Update overleaf.pdf"
+          publish_branch: pdf   # Specify the branch to publish to
+          publish_dir: output   # Deploy both PDFs
+          force_orphan: true    # Use an orphan branch for clean publishing
+          keep_files: false     # Replace existing files in the branch
+          commit_message: "Update PDFs (notes.pdf and notes_overleaf.pdf)"

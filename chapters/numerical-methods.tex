@@ -123,7 +123,7 @@ Let us now construct a scheme for finding an approxi­mate solution to \ref{eq:l
 We are now looking only for an approximate solution at the discrete points in the $(x,t)$ plane formed by the grid shown in the figure below. The approximate solution at a point $(j\Delta x,n\Delta t)$ is denoted by $u^n_j$.
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.35\linewidth]{uploads/Screenshot 2024-12-07 163047.png}
+	\includegraphics[width=0.35\linewidth]{upload/Screenshot 2024-12-07 163047.png}
 	\caption{A finite difference grid for finding an approximate solution of \ref{eq:linear adv eq}}
 	\label{fig:grid sol lin adv eq}
 \end{figure}
@@ -171,7 +171,7 @@ A necessary condition for convergence of a scheme is, obviously, that the charac
 thus, this is a necessary condition for convergence of \ref{eq:forward and upward scheme}
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=7cm]{uploads/Screenshot 2024-11-10 192132.png}
+	\includegraphics[width=7cm]{upload/Screenshot 2024-11-10 192132.png}
 	\caption{A possible relative position of a characteristic and of a domain of dependence}
 	\label{fig:grid sol}
 \end{figure}
@@ -205,32 +205,32 @@ is also bounded.
 If it is, then every value \(u_j^n\) must be bounded, and the stability of the scheme has been proved. The method is called the energy method since in physical applications \(u^2\) is often proportional to some form of energy. Of course, there are examples when this is not so.
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.75\linewidth]{uploads/Immagine 2024-12-07 101350.jpg}
+	\includegraphics[width=0.75\linewidth]{upload/Immagine 2024-12-07 101350.jpg}
 \end{figure}
 \textit{ Von Neumann’s,} or the Fourier series method is the most frequently used method of linear equations that can be expressed in form of a Fourier series, where each harmonic component is also a solution. Thus, we can test the stability of a single harmonic solution ; stability of all admissible harmonics will then be a necessary condition for stability of the scheme.
 %For an illustration of this method, it is useful first to obtain an analytic solution of the advection equation :
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.70\linewidth]{uploads/Immagine 2024-12-07 102403.jpg}
+	\includegraphics[width=0.70\linewidth]{upload/Immagine 2024-12-07 102403.jpg}
 \end{figure}
 A harmonic  solution of the finite difference advection equation.
 \begin{figure}[htp!]
 	\centering
-	\includegraphics[width=0.65\linewidth]{uploads/Immagine 2024-12-07 103148.jpg}
+	\includegraphics[width=0.65\linewidth]{upload/Immagine 2024-12-07 103148.jpg}
 \end{figure}
 \begin{figure}[htp!]
 	\centering
-	\includegraphics[width=0.65\linewidth]{uploads/hhhhh.png}
+	\includegraphics[width=0.65\linewidth]{upload/hhhhh.png}
 \end{figure}
 
 The Von Neumann condition permits exponential growth of the solution, but no faster. This is useful for analyzing cases where the true solution grows exponentially. However, when the true solution does not grow, as in example 2.6.7, it is common to replace the von Neumann condition with a sufficient condition, much less generous than that required by the original definition of stability : \(|\lambda|\leq1\).
 \begin{figure}[htp!]
 	\centering
-	\includegraphics[width=0.65\linewidth]{uploads/mi.png}
+	\includegraphics[width=0.65\linewidth]{upload/mi.png}
 \end{figure}
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.45\linewidth]{uploads/pp.png}
+	\includegraphics[width=0.45\linewidth]{upload/pp.png}
 \end{figure}
 
 The graphs of the $|\lambda|^2$ curves are shown in the picture above. In general, as the wave length $L$ increases, that is, as $k$ approaches to zero, the amplification factor approaches unity for any value of the parameter $\mu$. The figure shows that within the stable region the scheme is damping for all values $\mu\leq 1$. The damping increases as the wave length decreases. Since the true solution has a constant amplitude, this damping reveals an error due to finite differencing. We can see that this error increases as the wave length decreases. At the shortest resolvable wave length $L=2\Delta x$, the error may be very great unless $\Delta t$ extremely small. It is even possible for this wave to be completely removed after only a single time step.
@@ -347,14 +347,14 @@ so
 with $\theta$ representing the change in argument (or phase change) of the numerical solution in each time step. Since we know that the amplitude of the true solution does not change, we shall require $|\lambda|\leq 1$ for stability.
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.50\linewidth]{uploads/Screenshot 2024-11-11 225800.png}
+	\includegraphics[width=0.50\linewidth]{upload/Screenshot 2024-11-11 225800.png}
 	\caption{stability scheme}
 	\label{fig:stab scheme}
 \end{figure}
 It will also be instructive to compare the phase change of the numerical solution per time step, $\theta$, with that of the true solution, $\omega\Delta t$. The ratio of these changes, $\frac{\theta}{\omega\Delta t}$, is the relative phase change of the numerical solution.
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.50\linewidth]{uploads/Screenshot 2024-11-11 230012.png}
+	\includegraphics[width=0.50\linewidth]{upload/Screenshot 2024-11-11 230012.png}
 	\caption{phase change}
 	\label{fig:phase change}
 \end{figure}
@@ -450,7 +450,7 @@ the Matsuno scheme is stable if $|p|<1$, so the time step must be $$\Delta t\leq
 This scheme is conditionally stable: the higher the frequency, the more restrictive is the stability condition. When differenciating \ref{3.2.23} we find that the amplification factor of the Matsuno scheme has a minimum for $p=1/\sqrt{2}$. Therefore, as pointed out by Matsuno (1966a) when dealing with a system with a number of frequencies we can choose a time step so as to have $0\leq p\leq 1/\sqrt{2}$ for all the frequencies present, and then, in the same way as backward implicit scheme, this scheme will reduce the relative amplitudes of high frequencies. This technique has recently become very popular for initialization of atmospheric models, where it is used to damp the spurious high frequency noise generated by the assimilation of the observed data. As shown by Matsuno (1966b) higher order accuracy schemes with similar filtering characteristics can be constructed.
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.50\linewidth]{uploads/Screenshot 2024-11-12 101958.png}
+	\includegraphics[width=0.50\linewidth]{upload/Screenshot 2024-11-12 101958.png}
 	\caption{The amplification factor as a function of $p=\omega\Delta t$, for the five two level schemes and for the true solution}
 	\label{fig:3.2.1}
 \end{figure}
@@ -606,7 +606,7 @@ The last term can be decomposed as
 \end{equation}
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.5\linewidth]{uploads/Screenshot 2024-11-12 151817.png}
+	\includegraphics[width=0.5\linewidth]{upload/Screenshot 2024-11-12 151817.png}
 	\caption{steps}
 	\label{fig:step}
 \end{figure}
@@ -625,7 +625,7 @@ If $k$ is in the range $\frac{1}{2}k_{max}<k\leq k_{max}$ the result of the mult
 To gain some insight into what happens in such a situation, consider a wave for which $k>K_{max}$. For example, let $L_t=\frac{4\Delta x}{3}$. A wave of that wave length is shown by the full line in 4.6.2. Knowing only the values at grid points we will not be able to distinguish this wave from the one shown by the dashed line. Thus, with the convention adopted earlier which assumes that the longest waves are present, we will make an error. This is called \textit{aliasing error}.
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.5\linewidth]{uploads/Screenshot 2024-11-12 161236.png}
+	\includegraphics[width=0.5\linewidth]{upload/Screenshot 2024-11-12 161236.png}
 	\caption{A wave of wave length $\frac{4\Delta x}{3}$, misrepresented by the finite difference grid as a wave of wave length $4\Delta x$.}
 	\label{fig:4.6.2}
 \end{figure}
@@ -738,7 +738,7 @@ A major advantage of the Arakawa scheme is its ability to eliminate nonlinear in
 There are many ways of constructing finite difference approximations to the Jacobian. We can use any of the three equivalent analytic expressions. We shall consider only approximations of the second order of accuracy. With the simplest centered space differencing, we require values of $p$, $q$ from a box of nine adjacent grid points to evaluate the Jacobian.
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.25\linewidth]{uploads/Screenshot 2024-11-13 174915.png}
+	\includegraphics[width=0.25\linewidth]{upload/Screenshot 2024-11-13 174915.png}
 	\caption{Stencil used to define approximations to Jacobian}
 	\label{fig:4.7.2}
 \end{figure}
@@ -788,21 +788,21 @@ This phase speed is a function of wave number, and, thus, we see that the space 
 
 There is, however, an important difference between this problem and the advection problem because we now have two dependent variables. We have assumed that they are both carried at every grid point.\begin{figure}[h]
 	\centering
-	\includegraphics[width=0.5\linewidth]{uploads/Screenshot 2024-11-13 180623.png}
+	\includegraphics[width=0.5\linewidth]{upload/Screenshot 2024-11-13 180623.png}
 	\caption{A grid with two dependent variables that are both carried at every grid points.}
 	\label{fig:5.1.3}
 \end{figure}
 As far as the system \ref{5.1.6} is concerned, however, the underlined variables in the figure depend only on other underlined variables. The same statement holds for the variables that are not underlined. Thus, the grid in the figure contains two elementary “sub-grids”, with the solution on one of these sub-grids being completely decoupled from the other. Thus, it would be better to calculate only one of these solutions, that is, to use a grid as shown below in \ref{fig:5.1.4} Such a grid, with variables carried at alternate points in space, is called a staggered grid.
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.5\linewidth]{uploads/Screenshot 2024-11-13 180824.png}
+	\includegraphics[width=0.5\linewidth]{upload/Screenshot 2024-11-13 180824.png}
 	\caption{A grid with two dependent variables that are carried at alternate grid points.}
 	\label{fig:5.1.4}
 \end{figure}
 The computation time needed to solve \ref{5.1.6} on the grid is reduced by a factor of two, and the truncation error is the same. Furthermore, the waves with $k\Delta x>\frac{\pi}{2}$ have been eliminated, and these are just the waves associated with large phase speed errors and negative group velocities.
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.45\linewidth]{uploads/Screenshot 2024-11-14 112837.png}
+	\includegraphics[width=0.45\linewidth]{upload/Screenshot 2024-11-14 112837.png}
 	\caption{Phase speed and group velocity, in the case of the linear advection equation, $c$ and $c_g$, and in the case of the corresponding differential-difference equation with second-order centered space differencing, $c^*$ and $c^*_g$}
 	\label{fig:4.2.2}
 \end{figure}
@@ -821,7 +821,7 @@ with $\omega^2=gH_0(k^2+l^2)$ the wave frequency.
 With two dimensions and three dependent variables, a large number of spatial arrangements of the variables are possible. For the present we consider the three rectangular arrangements shown below. The identifying letters (A), (E) and (C) are chosen so as to conform with the symbols used by Winninghoff and Arakawa (Arakawa, 1972).
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=0.5\linewidth]{uploads/Screenshot 2024-11-14 114112.png}
+	\includegraphics[width=0.5\linewidth]{upload/Screenshot 2024-11-14 114112.png}
 	\caption{Three types of lattice considered for the finite difference solution of \ref{5.2.5}}
 	\label{fig:5.2.1}
 \end{figure}
@@ -851,7 +851,7 @@ Using the subscripts shown in the figure, we define the centered space differenc
 \end{equation}
 this rotation is applicable to all the lattices. Here $d'$ is the distance between the points between which the finite difference is taken. Thus, for lattices (A) through (D) $d'$ is equal to the grid size $d$, and for the lattice (E) it is equal to $\sqrt{2d}$.\begin{figure}[h]
 	\centering
-	\includegraphics[width=0.5\linewidth]{uploads/Screenshot 2024-11-14 122636.png}
+	\includegraphics[width=0.5\linewidth]{upload/Screenshot 2024-11-14 122636.png}
 	\caption{Five types of lattice considered for the finite difference solution of \ref{5.3.4}}
 	\label{fig:5.3.1}
 \end{figure}
@@ -872,7 +872,7 @@ In conclusion, grid (C) is the best choice for simulating geostrophic adjustment
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.5\linewidth]{uploads/Screenshot 2024-11-14 124014.png}
+	\includegraphics[width=0.5\linewidth]{upload/Screenshot 2024-11-14 124014.png}
 	\caption{The function $\frac{\omega}{f}$ given by \ref{5.3.11}. The wavelength of the shortest resolvable wave along the $x$ axis is $sd$ for lattices (A) through (D), and $\sqrt{2d}$ for the lattice (E). Thus, we have to consider the range $0<kd\leq\pi$ for lattices (A) through (D), and the range $0<kd\leq\sqrt{2\pi}$ for the lattice (E).}
 	\label{fig:5.3.2}
 \end{figure}
@@ -884,7 +884,7 @@ If we consider the one-dimensional case in which the dependent variables are con
 Considering the two dimensional case, the values of $\frac{\omega}{f}$ that are obtained in the two-dimensional case for the true solution and those using lattices (B) and (C) are shown in \ref{fig:5.3.3}. The diagram for lattice (E) can be obtained by a counterclockwise rotation of the (B) lattice diagram.
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.5\linewidth]{uploads/Screenshot 2024-11-14 124824.png}
+	\includegraphics[width=0.5\linewidth]{upload/Screenshot 2024-11-14 124824.png}
 	\caption{The function $\omega/f$ for the true solution}
 	\label{fig:5.3.3}
 \end{figure}
@@ -980,7 +980,7 @@ This approximation works fine if everything is smoothed, but if there are jumps 
 The Gibbs phenomenon happens when we use a Fourier series to represent a function with a sudden jump (discontinuity). Near the jump, the Fourier series creates wavy overshoots and undershoots. As we add more terms to the series, the first overshoot stays at about 9\% of the jump size, and the waves don’t completely go away. Instead, they get squeezed closer to the jump, so their overall effect becomes smaller, and the total area of the waves approaches zero.
 \begin{figure}
 	\centering
-	\includegraphics[width=0.5\linewidth]{uploads/Screenshot 2024-11-14 170405.png}
+	\includegraphics[width=0.5\linewidth]{upload/Screenshot 2024-11-14 170405.png}
 	\caption{Representation of Gibbs phenomenon.}
 	\label{fig:Gibbs}
 \end{figure}
@@ -1203,7 +1203,7 @@ with the normalization:
 $$Y_l^m=\sqrt{\frac{2l+1}{4\pi}\frac{(l-m)!}{(l+m)!}}P_l^m(\sin\phi)e^{im\lambda}$$
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.5\linewidth]{uploads/Screenshot 2024-11-17 201945.png}
+	\includegraphics[width=0.5\linewidth]{upload/Screenshot 2024-11-17 201945.png}
 	\caption{Spherical harmonics}
 	\label{fig:spherical harmonics}
 \end{figure}
@@ -1225,7 +1225,7 @@ Having now a set of functions that are eigenfunctions of the Laplacian on the sp
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.5\linewidth]{uploads/Screenshot 2024-11-17 203102.png}
+	\includegraphics[width=0.5\linewidth]{upload/Screenshot 2024-11-17 203102.png}
 	\caption{spectral representations}
 	\label{fig:enter-label}
 \end{figure}
@@ -1246,7 +1246,7 @@ These expression must be inserted into the equation to obtain ordinary equations
 Recalling the equation of motion in terms of vorticity and divergence \ref{eq.motionforstreamf} and \ref{eq.geostream}, the linear terms will transform in linear terms for the spherical coefficients, and the laplacians will also be easily done by the multiplication by the eigenvalues. We will need to treat the nonlinear terms $U\nabla^2\psi$, $V\nabla^2\psi$, $U\Phi'$, $V\Phi'$, $(U^2+V^2)/2$.  However, we don't really need all the details of these non linear terms, we only need the total impact on the tendency. In this case, we need only the spectral coefficient of $A(\psi,\chi)$, $B(\psi,\chi)$, $C(\psi,\chi)$ and $E(\psi,\chi)$ non linear terms of the equation of motion. With the spectral coefficient of the non linear terms, we can discretize in time by choosing a time scheme, for example the leap-frog scheme.
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.5\linewidth]{uploads/Screenshot 2024-11-18 095232.png}\quad\includegraphics[width=0.5\linewidth]{uploads/Screenshot 2024-11-18 095428.png}
+	\includegraphics[width=0.5\linewidth]{upload/Screenshot 2024-11-18 095232.png}\quad\includegraphics[width=0.5\linewidth]{upload/Screenshot 2024-11-18 095428.png}
 	\caption{Treating nonlinearity with a time discretization with Leap-Frog scheme}
 	\label{fig:trating nonlinearity}
 \end{figure}
@@ -1262,7 +1262,7 @@ where the first integral is the \textit{polynomial integration}. The second is f
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.58\linewidth]{uploads/Screenshot 2024-11-18 100538.png}
+	\includegraphics[width=0.58\linewidth]{upload/Screenshot 2024-11-18 100538.png}
 	\caption{Gaussian grids}
 	\label{fig:gaussian grids}
 \end{figure}
@@ -1271,7 +1271,7 @@ Numerically an integration is a summation, just like the derivatives are differe
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.5\linewidth]{uploads/gaussian grids.png}
+	\includegraphics[width=0.5\linewidth]{upload/gaussian grids.png}
 	\caption{Examples of gaussian grids}
 	\label{fig:enter-label}
 \end{figure}
@@ -1284,7 +1284,7 @@ $$\int_{-1}^1 f(x)dx\approx\displaystyle\sum_iw_if(\mu_i)$$
 Gauss showed that a $N$-point \textbf{Gaussian quadrature} yields an exact result for polynomials of degree $2N-1$ or less by a suitable choice of the nodes $\mu_i$ and weights $w_i$ for $i=1,\dots,N$. Efficient algorithms have been developed to execute fast and exploit new architectures.
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.5\linewidth]{uploads/Screenshot 2024-11-19 125912.png}\quad\includegraphics[width=0.5\linewidth]{uploads/Screenshot 2024-11-19 130025.png}
+	\includegraphics[width=0.5\linewidth]{upload/Screenshot 2024-11-19 125912.png}\quad\includegraphics[width=0.5\linewidth]{upload/Screenshot 2024-11-19 130025.png}
 	\caption{The transform cycle in the time-stepping}
 	\label{fig:transform cycle}
 \end{figure}
@@ -1299,14 +1299,14 @@ we can arrange them in a plane.
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.5\linewidth]{uploads/Screenshot 2024-11-17 204935.png}\quad\includegraphics[width=0.25\linewidth]{uploads/Screenshot 2024-11-17 205109.png}
+	\includegraphics[width=0.5\linewidth]{upload/Screenshot 2024-11-17 204935.png}\quad\includegraphics[width=0.25\linewidth]{upload/Screenshot 2024-11-17 205109.png}
 	\caption{a) spherical harmonics wavenumbers; b) form of the truncations}
 	\label{fig:The two most used truncation}
 \end{figure}
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.4\linewidth]{uploads/Screenshot 2024-11-17 205236.png}\quad\includegraphics[width=0.4\linewidth]{uploads/Screenshot 2024-11-17 205827.png}
+	\includegraphics[width=0.4\linewidth]{upload/Screenshot 2024-11-17 205236.png}\quad\includegraphics[width=0.4\linewidth]{upload/Screenshot 2024-11-17 205827.png}
 	\caption{Effects of truncation}
 	\label{fig:enter-label}
 \end{figure}
@@ -1404,7 +1404,7 @@ water vapor and chemical tracers.
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.5\linewidth]{uploads/Screenshot 2024-11-19 130213.png}
+	\includegraphics[width=0.5\linewidth]{upload/Screenshot 2024-11-19 130213.png}
 	\caption{Lagrangian Methods}
 	\label{fig:lag method}
 \end{figure}
@@ -1413,7 +1413,7 @@ In an Eulerian advection scheme an observer watches the world evolve around her 
 \subsection{Semi-Lagrangian Methods}
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.5\linewidth]{uploads/Screenshot 2024-11-19 142400.png}
+	\includegraphics[width=0.5\linewidth]{upload/Screenshot 2024-11-19 142400.png}
 	\caption{Semi-Lagrangian method}
 	\label{fig:enter-label}
 \end{figure}
@@ -1428,7 +1428,7 @@ and considering:
 $$q(x-2\alpha_m,t-\Delta t)$$ this quantity may not be at the grid point, I have to interpolate. This is preserving the trace and allowing me to look at a long time step. This transported quantities are used in a passive way because it doesn't reflect immediately in the rest of the dynamic.
 \begin{wrapfigure}{r}{0.58\textwidth}
 	\begin{center}
-		\includegraphics[width=0.45\linewidth]{uploads/Screenshot 2024-11-19 143432.png}
+		\includegraphics[width=0.45\linewidth]{upload/Screenshot 2024-11-19 143432.png}
 	\end{center}
 	\caption{Pressure coordinates vs sigma coordinates}
 	\label{fig:sigmababy}

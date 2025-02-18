@@ -8,14 +8,14 @@ Quantifying the rise in $CO_2$ requires models capable of simulating its interac
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.5\linewidth]{uploads/co2image.png}
+	\includegraphics[width=0.5\linewidth]{upload/co2image.png}
 	\caption{Monthly mean $CO_2$ at Mauna Loa}
 
 \end{figure}
 Methane ($CH_4$) emissions are increasing and are measured in parts per billion. Unlike CO$_2$, which is primarily emitted from combustion processes, CH$_4$ emissions arise from livestock (e.g., cattle farming), agricultural practices (e.g., rice paddies), industrial activities, including leaks in extraction industries.
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.5\linewidth]{uploads/ch4.png}
+	\includegraphics[width=0.5\linewidth]{upload/ch4.png}
 	\caption{Emissions of $CH_4$ in part per billion.}
 
 \end{figure}
@@ -28,7 +28,7 @@ To project future climate conditions, models incorporate assumptions about socio
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.5\linewidth]{uploads/nonlinclimatechange.png}
+	\includegraphics[width=0.5\linewidth]{upload/nonlinclimatechange.png}
 	\caption{Comparison on linear and nonlinear interpretations of the projection of climate change.}
 	\label{fig:clim model}
 \end{figure}
@@ -58,7 +58,7 @@ Warming is more pronounced in polar regions due to feedback mechanisms like ice-
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.5\linewidth]{uploads/imagewarming.png}
+	\includegraphics[width=0.5\linewidth]{upload/imagewarming.png}
 	\caption{One of the first evidence to the distribution of warming.}
 	\label{fig:warming}
 \end{figure}
@@ -79,13 +79,13 @@ Coupling components at higher frequencies—shifting from daily to hourly exchan
 \paragraph{Equilibrium climate sensitivity} Equilibrium Climate Sensitivity (ECS) is historically estimated at 2.2-2.5°C, ECS measures the temperature response to CO$_2$ doubling. ECS may evolve with baseline temperatures, complicating future predictions (if climate sensitivity depends on basic temperature, increasing it doesn't mean that climate sensibility will stay the same). However, as baseline temperatures rise, ECS may also evolve, making linear assumptions inadequate. Modern climate projections, driven by socioeconomic scenarios, aim to quantify these nonlinear changes, such as shifts in precipitation patterns (15–20\% increase) and polar amplification of warming.
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.5\linewidth]{uploads/climatescenarios.png}
+	\includegraphics[width=0.5\linewidth]{upload/climatescenarios.png}
 	\caption{Climate scenarios including social economics assumptions}
 	\label{fig:clim scenarios}
 \end{figure}
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.35\linewidth]{uploads/precipitations.png}\quad \includegraphics[width=0.35\linewidth]{uploads/sea ice.png}
+	\includegraphics[width=0.35\linewidth]{upload/precipitations.png}\quad \includegraphics[width=0.35\linewidth]{uploads/sea ice.png}
 	\caption{Precipitation anomalies (\%) and sea ice concentrations (\%)}
 
 \end{figure}
@@ -103,7 +103,7 @@ Some definitions:
 Carbon is the defining element of organic matter: virtually all organisms are based predominantly on carbon compounds, it is present in all reservoirs: biosphere, hydrosphere, atmosphere and lithosphere. Atmospheric components CO$_2$ and methane (CH$_4$) are greenhouse-gases, the latter being less abundant (\~100x), but more effective (20x), but also unstable (turnover time \~10y).
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.4\linewidth]{uploads/greenhouse situa.png}
+	\includegraphics[width=0.4\linewidth]{upload/greenhouse situa.png}
 	\caption{Greenhouse effect affects radiative balance. Greenhouse gases act as external forcing but what we are really interested in are emissions: what percentage of CO$_2$ stays as concentration and doesn't go away in the biological system? What part of these will be absopted, which goes in the biochemical system and so on.
 		A certain portion of the emission will be digested by the system, the extra will go into the atmospheric concentration, the net result is to have a model much more difficult to understand and model.}
 
@@ -156,7 +156,7 @@ $$\frac{\partial C}{\partial t}\big|_{bgc} =rC$$
 An \textbf{Earth System Model (ESM)} needs to take into account atmospheric dynamics, ocean dynamics, cryosphere, hydrography, atmospheric chemistry, terrestrial ecosystem, marine ecosystem.
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.5\linewidth]{uploads/Earth system model.png}
+	\includegraphics[width=0.5\linewidth]{upload/Earth system model.png}
 	\caption{Earth system model}
 
 \end{figure}
@@ -171,7 +171,7 @@ Advancements in ESMs have dramatically increased complexity due to:
 Model performance is evaluated against satellite observations, revealing improved simulation fidelity over time, especially in capturing chlorophyll distributions and carbon fluxes.
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.4\linewidth]{uploads/goodmodels.png}
+	\includegraphics[width=0.4\linewidth]{upload/goodmodels.png}
 	\caption{How good are these models, from satellites (left) and model (right).}
 
 \end{figure}
@@ -181,14 +181,14 @@ Efforts like the CMIP6 project coordinate global climate scenarios, extending fr
 Models predict that both land and ocean systems, traditionally acting as carbon sinks, may transition into sources as emissions continue. These insights highlight the necessity of understanding and mitigating anthropogenic impacts on Earth's climate systems.
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.4\linewidth]{uploads/CMCC model.png}
+	\includegraphics[width=0.4\linewidth]{upload/CMCC model.png}
 	\caption{CMCC Earth System model for CMIP6}
 
 \end{figure}
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.5\linewidth]{uploads/sources.png}
+	\includegraphics[width=0.5\linewidth]{upload/sources.png}
 	\caption{Fluxes of carbon between ocean and land, if above $0\rightarrow$ source. In this model both land and ocean become sources of carbon fluxes}
 
 \end{figure}
@@ -199,7 +199,7 @@ Since climate models often involve simulating multiple scenarios based on differ
 A significant factor in determining the outcomes of climate models is the amount of \textbf{greenhouse gases (GHGs)} in the atmosphere. The more GHGs present, the stronger the overall climate response. For example, the \textbf{RCP 2.6} scenario, which involves significant emission reductions, requires \textbf{negative emissions} (i.e., removing carbon from the atmosphere) after 2050–2060 in order to limit global temperature increases to \textbf{2°C}.
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.5\linewidth]{uploads/predictions.png}
+	\includegraphics[width=0.5\linewidth]{upload/predictions.png}
 	\caption{Models and predictions}
 
 \end{figure}
@@ -214,7 +214,7 @@ This phenomenon of committed warming means that even if emissions were reduced i
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.5\linewidth]{uploads/eqexperiments.png}
+	\includegraphics[width=0.5\linewidth]{upload/eqexperiments.png}
 	\caption{Equilibration experiments}
 
 \end{figure}
@@ -230,7 +230,7 @@ In contrast, a digital twin is a completely integrated system, it goes beyond ju
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.5\linewidth]{uploads/digital twins.png}
+	\includegraphics[width=0.5\linewidth]{upload/digital twins.png}
 	\caption{Digital world}
 
 \end{figure}

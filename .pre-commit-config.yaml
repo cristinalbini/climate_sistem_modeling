@@ -9,6 +9,7 @@ repos:
 #        types: [tex]
 #        always_run: true
 
+
       # Hook to format LaTeX files with latexindent
       - id: format-latex
         name: Format LaTeX files (.tex and .sty) with latexindent

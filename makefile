@@ -9,3 +9,4 @@ format:
         %latexindent -w chapters_overleaf/*.tex
 clean:
 	    ./cleanup.sh
+

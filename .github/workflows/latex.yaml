@@ -12,7 +12,7 @@ jobs:
       - name: Compile LaTeX to PDF
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: main.tex  # Cambia con il nome corretto del file .tex
+          root_file: overleaf.tex  # Cambia con il nome corretto del file .tex
 
       - name: Commit PDF to repository
         run: |
